@@ -60,7 +60,7 @@ CatalogItemDto {
 	amount: Int
 }
 
-*BookingDto {
+BookingDto {
 	id: UUID,
 	failedItems: Set<UUID>
 }
@@ -73,7 +73,8 @@ PaymentSubmissionDto {
 TokenResponseDto {
 	accessToken: String,
 	refreshToken: String
-}```
+}
+```
 
 
 ### Создание пользователя (user service)
