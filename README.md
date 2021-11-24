@@ -133,7 +133,7 @@ RESPONSE:
 ```jsx
 REQUEST:	
 	HTTP verb: POST
-	URL: /auth/refresh
+	URL: /authentication/refresh
 	HEADERS:
 		Authorization: Bearer refresh_token 
 
