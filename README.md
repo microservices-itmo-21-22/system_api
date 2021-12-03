@@ -1,4 +1,4 @@
-### Минимальное публичное API
+## Минимальное публичное API
 
 API заявленное ниже является публичным для системы в целом. Данное API будет использовать сервис тестирования для эмулирования действий пользователя, а так же для проверки консистентности системы и ее отдельных компонентов (даже в условиях асинхронного взаимодействия система должна приходить в согласованное состояние в течение некоторого времени). См. "eventual consistency"
 
@@ -285,4 +285,25 @@ REQUST:
 RESPONSE:
 	HTTP CODES: 2** | any other
 	BODY FORMAT: PaymentSubmissionDto
+```
+
+## Непубличное API
+Методы, необходимые для тестирования ваших сервисов
+
+### Добавление товаров в каталог
+```jsx
+REQUEST:	
+	HTTP verb: POST
+	URL: /_internal/addCatalogItem
+	BODY FORMAT:
+		{
+			title: String,
+			description: String,
+			price: Int,
+			amount: Int
+		}
+
+RESPONSE:
+	HTTP CODES: 2** | any other
+	BODY FORMAT: CatalogItemDto
 ```
