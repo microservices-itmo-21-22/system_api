@@ -294,7 +294,7 @@ RESPONSE:
 ```jsx
 REQUEST:	
 	HTTP verb: POST
-	URL: /_internal/addCatalogItem
+	URL: /_internal/catalogItem
 	BODY FORMAT:
 		{
 			title: String,
