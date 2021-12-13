@@ -74,6 +74,28 @@ TokenResponseDto {
 	accessToken: String,
 	refreshToken: String
 }
+
+BookingStatus: FAILED | SUCCESS
+
+BookingLogRecord {
+    bookingId: UUID,
+    itemId: UUID,
+    status: BookingStatus,
+    amount: Int,
+    timestamp: Long
+}
+
+DeliverySubmissionOutcome: SUCCESS | FAILURE | EXPIRED
+
+DeliveryInfoRecord {
+    outcome: DeliverySubmissionOutcome,
+    preparedTime: Long,
+    attempts: Int,
+    submittedTime: Long,
+    transactionId: UUID,
+    submissionStartedTime: Long
+}
+
 ```
 
 
@@ -185,7 +207,7 @@ REQUST:
 
 RESPONSE:
 	HTTP CODES: 2** | any other
-	BODY FORMAT: List<**UserAccountFinancialLogRecordDto>**
+	BODY FORMAT: List<UserAccountFinancialLogRecordDto>
 ```
 
 ### Получение товаров каталога (warehouse service)
@@ -287,10 +309,12 @@ RESPONSE:
 	BODY FORMAT: PaymentSubmissionDto
 ```
 
+
 ## Непубличное API
 Методы, необходимые для тестирования ваших сервисов
 
 ### Добавление товаров в каталог
+
 ```jsx
 REQUEST:	
 	HTTP verb: POST
@@ -306,4 +330,36 @@ REQUEST:
 RESPONSE:
 	HTTP CODES: 2** | any other
 	BODY FORMAT: CatalogItemDto
+```
+
+### Получить список забронированных товаров по bookingId
+
+```jsx
+REQUEST:	
+	HTTP verb: GET
+	URL: /_internal/bookingHistory/{bookingId}
+    HEADERS:
+        Authorization: Bearer access_token
+    PARAMETERS:
+        bookingId: UUID
+
+RESPONSE:
+	HTTP CODES: 2** | any other
+	BODY FORMAT: List<BookingLogRecord>
+```
+
+### Получить историю доставки заказа по orderId
+
+```jsx
+REQUEST:	
+	HTTP verb: GET
+	URL: /_internal/deliveryLog/{orderId}
+    HEADERS:
+        Authorization: Bearer access_token
+    PARAMETERS:
+        orderId: UUID
+
+RESPONSE:
+	HTTP CODES: 2** | any other
+	BODY FORMAT: List<DeliveryInfoRecord>
 ```
