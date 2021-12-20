@@ -333,6 +333,7 @@ RESPONSE:
 ```
 
 ### Получить список забронированных товаров по bookingId
+```bookingId = BookingDto.id``` получаемый при финализации заказа
 
 ```jsx
 REQUEST:	
