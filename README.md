@@ -273,7 +273,7 @@ REQUEST:
 
 RESPONSE:
 	HTTP CODES: 2** | any other
-	BODY FORMAT: List<Int>
+	BODY FORMAT: List<Int> # от 1 до 30 (секунды)
 ```
 
 ### Установление желаемого времени доставки (order service)
