@@ -215,11 +215,12 @@ RESPONSE:
 ```jsx
 REQUEST:
 	HTTP verb: GET
-	URL: /items?available={available}
+	URL: /items?available={available}&size={size}
 	HEADERS:
             Authorization: Bearer access_token
 	PARAMETERS:
             available: Boolean
+	    size: Int
 
 RESPONSE:
 	HTTP CODES: 2** | any other
